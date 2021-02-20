@@ -38,9 +38,9 @@ export class UserResolver {
     @Ctx() { em }: MyContext
   ): Promise<UserResponse> {
     const hashedPass = crypto
-    .createHash("sha256")
-    .update(password)
-    .digest("hex");
+      .createHash("sha256")
+      .update(password)
+      .digest("hex");
 
     const user = em.create(User, { username, password: hashedPass });
 
@@ -86,21 +86,6 @@ export class UserResolver {
     return { user };
   }
 
-  /*   @Mutation(() => Post, { nullable: true })
-  async updatePost(
-    @Arg("id") id: number,
-    @Arg("title") title: string,
-    @Ctx() { em }: MyContext
-  ): Promise<Post | null> {
-    const post = await em.findOne(Post, { id });
-    if (!post) {
-      return null;
-    }
-    post.title = title;
-    await em.persistAndFlush(post);
-    return post;
-  }
- */
   @Mutation(() => Boolean)
   async deleteUser(
     @Arg("username") username: string,

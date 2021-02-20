@@ -24,7 +24,6 @@ const main = async () => {
   app.listen(4000, () => {
     console.log("Started server on port 4000");
   });
-
 };
 
 main().catch((err) => {
